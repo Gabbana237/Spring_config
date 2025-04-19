@@ -11,10 +11,10 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/
-        - id: client
-          uri: lb://CLIENT
+        - id: comment
+          uri: lb://COMMENT_SERVICE
           predicates:
-            - Path=/client/**
+            - Path=/comment/**
 
         - id: order
           uri: lb://ORDER
