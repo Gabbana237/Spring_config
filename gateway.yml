@@ -11,7 +11,7 @@ spring:
           uri: http://localhost:8081
           predicates:
             - Path=/
-        - id: comment
+        - id: comment-service
           uri: lb://COMMENT_SERVICE
           predicates:
             - Path=/comment/**
