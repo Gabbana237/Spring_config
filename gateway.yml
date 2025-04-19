@@ -1,0 +1,37 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: gateway
+
+  cloud:
+    gateway:
+      routes:
+        - id: default-root
+          uri: http://localhost:8081
+          predicates:
+            - Path=/
+        - id: client
+          uri: lb://CLIENT
+          predicates:
+            - Path=/client/**
+
+        - id: order
+          uri: lb://ORDER
+          predicates:
+            - Path=/order/**
+
+        - id: product
+          uri: lb://PRODUCT
+          predicates:
+            - Path=/product/**
+
+        - id: config-server
+          uri: lb://CONFIGSERVER
+          predicates:
+            - Path=/config/**
+
+        - id: eureka-server
+          uri: http://localhost:8090
+          predicates:
+            - Path=/eureka-server/**
